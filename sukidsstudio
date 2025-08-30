@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moment Studio - Lưu Giữ Khoảnh Khắc Của Bạn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f8f7f2; /* A warm, creamy background */
+        }
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/222222/FFFFFF?text=Hinh+Anh+Hero');
+            background-size: cover;
+            background-position: center;
+        }
+        .concept-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .concept-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+        .modal-overlay {
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        /* Make sure date input placeholder is visible */
+        input[type="date"]:before {
+            content: attr(placeholder) !important;
+            color: #aaa;
+            margin-right: 0.5em;
+        }
+        input[type="date"]:focus:before,
+        input[type="date"]:valid:before {
+            content: "";
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header id="header" class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-gray-900 tracking-wider">Moment Studio</a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#concepts" class="text-gray-600 hover:text-amber-600 transition">Concepts</a>
+                <a href="#process" class="text-gray-600 hover:text-amber-600 transition">Quy Trình</a>
+                <a href="#gallery" class="text-gray-600 hover:text-amber-600 transition">Thư Viện Ảnh</a>
+                <a href="#contact" class="text-gray-600 hover:text-amber-600 transition">Liên Hệ</a>
+            </nav>
+            <a href="#concepts" class="hidden md:inline-block bg-amber-800 text-white font-semibold px-6 py-2 rounded-full hover:bg-amber-900 transition-colors shadow-lg">Đặt Lịch Ngay</a>
+             <button id="mobile-menu-button" class="md:hidden p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 pb-4">
+            <a href="#concepts" class="block py-2 text-gray-600 hover:text-amber-600">Concepts</a>
+            <a href="#process" class="block py-2 text-gray-600 hover:text-amber-600">Quy Trình</a>
+            <a href="#gallery" class="block py-2 text-gray-600 hover:text-amber-600">Thư Viện Ảnh</a>
+            <a href="#contact" class="block py-2 text-gray-600 hover:text-amber-600">Liên Hệ</a>
+            <a href="#concepts" class="mt-4 block text-center bg-amber-800 text-white font-semibold px-6 py-2 rounded-full hover:bg-amber-900 transition-colors shadow-lg">Đặt Lịch Ngay</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg h-[90vh] flex items-center justify-center text-white text-center px-4">
+            <div class="container mx-auto">
+                <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-4">Lưu Giữ Khoảnh Khắc, Dệt Nên Câu Chuyện</h1>
+                <p class="text-base sm:text-lg max-w-2xl mx-auto mb-8">Khám phá 5 concept chụp ảnh độc đáo, được thiết kế riêng để thể hiện cá tính và cảm xúc chân thật nhất của bạn.</p>
+                <a href="#concepts" class="bg-amber-600 text-white font-bold px-8 py-3 rounded-full text-base sm:text-lg hover:bg-amber-700 transition-transform hover:scale-105 shadow-2xl">KHÁM PHÁ CÁC GÓI CHỤP</a>
+            </div>
+        </section>
+
+        <!-- Concepts Section -->
+        <section id="concepts" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900">Concept Chụp Ảnh Độc Quyền</h2>
+                    <p class="text-md sm:text-lg text-gray-600 mt-2 max-w-2xl mx-auto">Mỗi concept là một câu chuyện, một phong cách. Hãy xem đâu là nơi bạn thuộc về.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Concept 1: Nàng Thơ Dưới Nắng -->
+                    <div class="concept-card bg-f8f7f2 rounded-lg overflow-hidden shadow-lg" data-concept="Nàng Thơ Dưới Nắng" data-price="3.500.000 VNĐ">
+                        <img src="https://placehold.co/600x400/f8f7f2/333333?text=Nang+Tho+Duoi+Nang" alt="Nàng Thơ Dưới Nắng" class="w-full h-64 object-cover">
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold mb-2">Nàng Thơ Dưới Nắng</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Vẻ đẹp trong trẻo, lãng mạn giữa thiên nhiên, tận dụng ánh sáng tự nhiên để kể câu chuyện của bạn.</p>
+                            <div class="text-xl font-bold text-amber-800 mb-6">3.500.000 VNĐ</div>
+                            <button class="w-full bg-gray-900 text-white font-semibold py-3 rounded-lg hover:bg-gray-700 transition choose-package-btn">Chọn Gói Này</button>
+                        </div>
+                    </div>
+
+                    <!-- Concept 2: Doanh Nhân Thời Đại -->
+                    <div class="concept-card bg-f8f7f2 rounded-lg overflow-hidden shadow-lg" data-concept="Doanh Nhân Thời Đại" data-price="4.000.000 VNĐ">
+                        <img src="https://placehold.co/600x400/333333/FFFFFF?text=Doanh+Nhan+Thoi+Dai" alt="Doanh Nhân Thời Đại" class="w-full h-64 object-cover">
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold mb-2">Doanh Nhân Thời Đại</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Profile chuyên nghiệp, thể hiện sự tự tin, quyền lực và đẳng cấp của một người dẫn đầu.</p>
+                            <div class="text-xl font-bold text-amber-800 mb-6">4.000.000 VNĐ</div>
+                            <button class="w-full bg-gray-900 text-white font-semibold py-3 rounded-lg hover:bg-gray-700 transition choose-package-btn">Chọn Gói Này</button>
+                        </div>
+                    </div>
+
+                    <!-- Concept 3: Gia Đình Là Số 1 -->
+                    <div class="concept-card bg-f8f7f2 rounded-lg overflow-hidden shadow-lg" data-concept="Gia Đình Là Số 1" data-price="5.000.000 VNĐ">
+                        <img src="https://placehold.co/600x400/f8f7f2/333333?text=Gia+Dinh+La+So+1" alt="Gia Đình Là Số 1" class="w-full h-64 object-cover">
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold mb-2">Gia Đình Là Số 1</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Ghi lại khoảnh khắc ấm áp, tự nhiên và đầy ắp yêu thương bên những người thân yêu nhất.</p>
+                            <div class="text-xl font-bold text-amber-800 mb-6">5.000.000 VNĐ</div>
+                            <button class="w-full bg-gray-900 text-white font-semibold py-3 rounded-lg hover:bg-gray-700 transition choose-package-btn">Chọn Gói Này</button>
+                        </div>
+                    </div>
+                    
+                     <!-- Concept 4: Tình Yêu Vĩnh Cửu -->
+                    <div class="concept-card bg-f8f7f2 rounded-lg overflow-hidden shadow-lg" data-concept="Tình Yêu Vĩnh Cửu" data-price="4.500.000 VNĐ">
+                        <img src="https://placehold.co/600x400/333333/FFFFFF?text=Tinh+Yeu+Vinh+Cuu" alt="Tình Yêu Vĩnh Cửu" class="w-full h-64 object-cover">
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold mb-2">Tình Yêu Vĩnh Cửu</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Kể lại câu chuyện tình yêu của hai bạn qua những khung hình đầy cảm xúc và lãng mạn.</p>
+                            <div class="text-xl font-bold text-amber-800 mb-6">4.500.000 VNĐ</div>
+                            <button class="w-full bg-gray-900 text-white font-semibold py-3 rounded-lg hover:bg-gray-700 transition choose-package-btn">Chọn Gói Này</button>
+                        </div>
+                    </div>
+
+                    <!-- Concept 5: Dấu Ấn Cá Nhân -->
+                    <div class="concept-card bg-f8f7f2 rounded-lg overflow-hidden shadow-lg" data-concept="Dấu Ấn Cá Nhân" data-price="6.000.000 VNĐ">
+                        <img src="https://placehold.co/600x400/f8f7f2/333333?text=Dau+An+Ca+Nhan" alt="Dấu Ấn Cá Nhân" class="w-full h-64 object-cover">
+                        <div class="p-5">
+                            <h3 class="text-xl font-bold mb-2">Dấu Ấn Cá Nhân</h3>
+                            <p class="text-gray-600 mb-4 text-sm">Xây dựng hình ảnh cá nhân chuyên nghiệp cho KOC/KOL, tạo sức hút độc đáo trên mạng xã hội.</p>
+                            <div class="text-xl font-bold text-amber-800 mb-6">6.000.000 VNĐ</div>
+                            <button class="w-full bg-gray-900 text-white font-semibold py-3 rounded-lg hover:bg-gray-700 transition choose-package-btn">Chọn Gói Này</button>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-card bg-f8f7f2 rounded-lg overflow-hidden shadow-lg flex flex-col items-center justify-center text-center p-6 border-2 border-dashed border-gray-300 hover:border-amber-800 hover:bg-amber-50 transition">
+                        <h3 class="text-xl font-bold mb-2">Concept Của Riêng Bạn?</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Hãy chia sẻ ý tưởng, chúng tôi sẽ biến nó thành hiện thực. Liên hệ để được tư vấn gói chụp riêng.</p>
+                        <a href="#contact" class="w-full bg-amber-800 text-white font-semibold py-3 rounded-lg hover:bg-amber-900 transition">Liên Hệ Tư Vấn</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- How It Works Section -->
+        <section id="process" class="py-16 bg-f8f7f2">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-12">Quy Trình Đơn Giản Trong 3 Bước</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <div class="flex flex-col items-center">
+                        <div class="bg-amber-800 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mb-4">1</div>
+                        <h3 class="text-xl font-bold mb-2">Chọn Concept & Đặt Lịch</h3>
+                        <p class="text-gray-600 text-sm">Lựa chọn gói chụp bạn yêu thích và điền thông tin để thanh toán, đặt lịch hẹn nhanh chóng.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-amber-800 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mb-4">2</div>
+                        <h3 class="text-xl font-bold mb-2">Trải Nghiệm Buổi Chụp</h3>
+                        <p class="text-gray-600 text-sm">Thả lỏng và tận hưởng buổi chụp chuyên nghiệp cùng ekip. Chúng tôi sẽ giúp bạn có những khoảnh khắc tự nhiên nhất.</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-amber-800 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mb-4">3</div>
+                        <h3 class="text-xl font-bold mb-2">Nhận Sản Phẩm Hoàn Chỉnh</h3>
+                        <p class="text-gray-600 text-sm">Nhận toàn bộ file ảnh gốc và các ảnh đã retouch chỉ sau 7-10 ngày làm việc qua link online tiện lợi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">Khoảnh Khắc Chúng Tôi Tạo Nên</h2>
+                <div class="columns-2 sm:columns-3 gap-4">
+                    <img class="mb-4 rounded-lg shadow-md w-full" src="https://placehold.co/500x750/f8f7f2/333?text=Anh+1" />
+                    <img class="mb-4 rounded-lg shadow-md w-full" src="https://placehold.co/500x300/333/FFF?text=Anh+2" />
+                    <img class="mb-4 rounded-lg shadow-md w-full" src="https://placehold.co/500x500/f8f7f2/333?text=Anh+3" />
+                    <img class="mb-4 rounded-lg shadow-md w-full" src="https://placehold.co/500x800/333/FFF?text=Anh+4" />
+                    <img class="mb-4 rounded-lg shadow-md w-full" src="https://placehold.co/500x450/f8f7f2/333?text=Anh+5" />
+                    <img class="mb-4 rounded-lg shadow-md w-full" src="https://placehold.co/500x600/333/FFF?text=Anh+6" />
+                    <img class="mb-4 rounded-lg shadow-md w-full" src="https://placehold.co/500x700/f8f7f2/333?text=Anh+7" />
+                    <img class="mb-4 rounded-lg shadow-md w-full" src="https://placehold.co/500x350/333/FFF?text=Anh+8" />
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div class="md:col-span-1">
+                    <h3 class="text-xl font-bold mb-4">Moment Studio</h3>
+                    <p class="text-gray-400 text-sm">Nơi những khoảnh khắc đời thường trở nên phi thường.</p>
+                </div>
+                <div class="md:col-span-1">
+                    <h3 class="text-lg font-semibold mb-4">Thông Tin Liên Hệ</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li>Email: hello@momentstudio.com</li>
+                        <li>Hotline: 0987 654 321</li>
+                        <li>Địa chỉ: 123 Đường Sáng Tạo, Quận 1, TP.HCM</li>
+                    </ul>
+                </div>
+                <div class="md:col-span-1">
+                    <h3 class="text-lg font-semibold mb-4">Theo Dõi Chúng Tôi</h3>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.2 13.8c0 .1-.1.3-.2.4-.1.1-.3.2-.4.2h-1.8c-.3 0-.5-.1-.7-.2-.1-.1-.2-.3-.2-.5 0-.2.1-.4.2-.5.1-.1.3-.2.5-.2h.3c.2 0 .3 0 .4.1.1.1.2.1.2.2zm-2.8-1.6c0 .1-.1.3-.2.4-.1.1-.3.2-.4.2h-1.8c-.3 0-.5-.1-.7-.2-.1-.1-.2-.3-.2-.5 0-.2.1-.4.2-.5.1-.1.3-.2.5-.2h.3c.2 0 .3 0 .4.1.1.1.2.1.2.2zm-2.8-1.6c0 .1-.1.3-.2.4-.1.1-.3.2-.4.2H7.2c-.3 0-.5-.1-.7-.2-.1-.1-.2-.3-.2-.5 0-.2.1-.4.2-.5.1-.1.3-.2.5-.2h.3c.2 0 .3 0 .4.1.1.1.2.1.2.2zM12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.398 1.363.444 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.046 1.064-.197 1.791-.444 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.398-2.427.444-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.046-1.791-.197-2.427-.444a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.398-1.363-.444-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.046-1.064.197-1.791.444-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.343 2.52c.636-.247 1.363-.398 2.427-.444C9.796 2.013 10.149 2 12.315 2zm-1.002 6.363a4.638 4.638 0 11-3.282 3.282 4.638 4.638 0 013.282-3.282zM12 15a3 3 0 110-6 3 3 0 010 6zm6.303-7.857a1.292 1.292 0 11-1.828-1.828 1.292 1.292 0 011.828 1.828z" clip-rule="evenodd" /></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-6 text-center text-gray-500">
+                <p class="text-xs">&copy; 2025 Moment Studio. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal-overlay fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none">
+        <div class="modal-content bg-white rounded-lg shadow-2xl w-full max-w-md p-6 sm:p-8 relative opacity-0 transform -translate-y-10">
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+            <div id="modal-initial-view">
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Xác Nhận Gói Chụp</h2>
+                <p class="text-gray-600 mb-6 text-sm">Vui lòng kiểm tra thông tin và hoàn tất đặt lịch.</p>
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-md font-bold text-amber-900" id="modal-concept-name"></h3>
+                    <p class="text-xl font-bold text-amber-800 mt-1" id="modal-concept-price"></p>
+                </div>
+                <form id="booking-form">
+                    <div class="mb-4">
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Họ và Tên</label>
+                        <input type="text" id="name" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500 text-sm">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input type="email" id="email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500 text-sm">
+                    </div>
+                    <div class="mb-4">
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Số Điện Thoại</label>
+                        <input type="tel" id="phone" name="phone" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500 text-sm">
+                    </div>
+                    <div class="mb-6">
+                        <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Ngày Chụp Mong Muốn</label>
+                        <input type="date" id="date" name="date" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-amber-500 focus:border-amber-500 text-sm" placeholder="Chọn ngày">
+                    </div>
+                    <button type="submit" class="w-full bg-amber-800 text-white font-bold py-3 rounded-lg hover:bg-amber-900 transition-colors text-md">Xác Nhận & Thanh Toán</button>
+                </form>
+            </div>
+            <div id="modal-success-view" class="hidden text-center py-10">
+                 <div class="w-16 h-16 bg-green-100 rounded-full mx-auto flex items-center justify-center mb-5">
+                    <svg class="w-10 h-10 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                 </div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">Đặt Lịch Thành Công!</h2>
+                <p class="text-gray-600 text-sm">Cảm ơn bạn đã tin tưởng Moment Studio. Chúng tôi sẽ liên hệ với bạn sớm nhất để xác nhận chi tiết. Hẹn gặp bạn!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when a link is clicked
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // Modal Logic
+            const paymentModal = document.getElementById('payment-modal');
+            const modalContent = paymentModal.querySelector('.modal-content');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const choosePackageBtns = document.querySelectorAll('.choose-package-btn');
+            
+            const modalConceptName = document.getElementById('modal-concept-name');
+            const modalConceptPrice = document.getElementById('modal-concept-price');
+            
+            const initialView = document.getElementById('modal-initial-view');
+            const successView = document.getElementById('modal-success-view');
+            const bookingForm = document.getElementById('booking-form');
+
+            function openModal() {
+                paymentModal.classList.remove('opacity-0', 'pointer-events-none');
+                modalContent.classList.remove('opacity-0', '-translate-y-10');
+                initialView.style.display = 'block';
+                successView.style.display = 'none';
+                bookingForm.reset();
+            }
+
+            function closeModal() {
+                paymentModal.classList.add('opacity-0');
+                modalContent.classList.add('opacity-0', '-translate-y-10');
+                setTimeout(() => {
+                    paymentModal.classList.add('pointer-events-none');
+                }, 300);
+            }
+
+            choosePackageBtns.forEach(button => {
+                button.addEventListener('click', function () {
+                    const card = this.closest('.concept-card');
+                    const concept = card.dataset.concept;
+                    const price = card.dataset.price;
+
+                    modalConceptName.textContent = concept;
+                    modalConceptPrice.textContent = price;
+                    openModal();
+                });
+            });
+
+            closeModalBtn.addEventListener('click', closeModal);
+            paymentModal.addEventListener('click', function(event) {
+                if (event.target === paymentModal) {
+                    closeModal();
+                }
+            });
+            
+            bookingForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                initialView.style.display = 'none';
+                successView.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
+
